@@ -1,0 +1,80 @@
+% !TEX root = exercise-book-opt.tex
+
+\subsection{Симметричные матрицы}
+
+Пусть \(\matrixA\) -- (\(n\times n\)) симметричная матрица.
+
+\begin{teorema}[Критерий Сильвестра]\label{SylvesterCiterion}
+Пусть $\matrixA$ -- симметричная матрица и
+$\Delta_1,\ldots,\Delta_n$ последовательность ее угловых миноров:
+\begin{align*}
+	\Delta_1&=a_{11} & \Delta_2&=\det\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} & 
+	&\ldots & \Delta_n&=\det\matrixA
+\end{align*}
+Тогда
+\begin{enumerate}
+	\item $\matrixA>0\iff\Delta_i>0$, $i=1,\ldots,n$.
+	\item $\matrixA<0\iff(-1)^i\Delta_i>0$, $i=1,\ldots,n$.
+	\item если знаки миноров не удовлетворяют предыдущим пунктам, 
+	то матрица не знакоопределена
+\end{enumerate}  
+\end{teorema}
+
+\begin{propuesta}\label{2times2definitness}
+Пусть $\matrixA$ -- симметричная $2\times 2$ 
+Тогда
+\begin{align*}
+	\matrixA\geq0 &\iff \begin{matrix} a_{11} \\ a_{22} \end{matrix} \geq0,\;\det\matrixA\geq0\\
+	\matrixA\leq0  &\iff \begin{matrix} a_{11} \\ a_{22} \end{matrix} \leq0,\;\det\matrixA\geq0.
+\end{align*}    
+\end{propuesta}
+
+Для  $3\times3$ матрицы обозначим центральные миноры 
+\begin{align*}
+	\Minor_{(12)}&=\det\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \\
+	\Minor_{(13)}&=\det\begin{pmatrix} a_{11} & a_{13} \\ a_{31} & a_{33} \end{pmatrix} \\
+	\Minor_{(23)}&=\det\begin{pmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{pmatrix} 
+\end{align*}
+
+\begin{propuesta}\label{3times3definitness}
+Пусть $\matrixA$ -- симметричная $3\times 3$. Тогда
+\begin{align*}
+	\matrixA\geq 0 &\iff \begin{matrix} a_{11} \\ a_{22} \\ a_{33} \end{matrix}\geq0,\;
+	\begin{matrix} \Minor_{(12)} \\ \Minor_{(13)} \\ \Minor_{(23)} \end{matrix}\geq0,\;
+	\det\matrixA\geq0\\
+	\matrixA\leq 0 &\iff \begin{matrix} a_{11} \\ a_{22} \\ a_{33} \end{matrix}\leq0,\;
+	\begin{matrix} \Minor_{(12)} \\ \Minor_{(13)} \\ \Minor_{(23)} \end{matrix}\geq0,\;
+	\det\matrixA\leq0.
+\end{align*}
+\end{propuesta}
+
+\subsection{Выпуклые функции}
+
+Пусть числовая функция \(f\) определена на % выпуклом множестве 
+\(\Domain(f)\subset \R^n\)
+
+\begin{teorema}
+Дважды непрерывно дифференцируемая функция $f$ выпукла $\iff$ 
+$\Hessian_f(\vectx)\geq0$ %(как симметричная матрица) 
+для всех $\vectx\in\Domain(f)$.
+
+Если $\Hessian_f(\vectx)>0$ для всех $\vectx\in\Domain(f)$, 
+то функция строго выпукла на $\Domain(f)$.
+\end{teorema}
+
+\begin{col}
+Дважды непрерывно дифференцируемая функция $f$ вогнута $\iff$ 
+$\Hessian_f(\vectx)\leq0$ % (как симметричная матрица) 
+для всех $\vectx\in\Domain(f)$.
+
+Если $\Hessian_f(\vectx)<0$ для всех $\vectx\in\Domain(f)$, 
+то функция строго вогнута
+на $\Domain(f)$.
+\end{col}
+
+\begin{remark}
+Знак гессиана проверяем по критерию Сильвестра 
+\ref{SylvesterCiterion} или
+используем Предложения \ref{2times2definitness}, \ref{3times3definitness}
+\end{remark}
+	
