@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate,hhline, bm}
+\usepackage[mathscr]{eucal}
+%\usepackage{mathtext}
+
+\usepackage{hyperref}
+\hypersetup{unicode=true, final=true, colorlinks=true}
+
+
+\input{optimization-defs.tex}
+
+\theoremstyle{remark}
+\newtheorem{exercise}{}[subsection]
+\renewcommand{\theexercise}{\textbf{\textnumero \arabic{exercise}}}
+
+%\DeclareMathOperator{\cov}{cov}
+%\DeclareMathOperator{\corr}{corr}
+%\DeclareMathOperator{\Var}{Var}
+
+%\topmargin=-2cm%-1.5cm
+
+%\addtolength{\textheight}{3cm}
+
+%\oddsidemargin=-0.1cm
+
+%\addtolength{\textwidth}{1.8cm}
+
+
+\title{Задачи по Методам оптимизации и Теории игр}
+\author{Артамонов Н.В.}
+%\date{весна 2014}
+
+%\title{Задачи для подготовки к экзамену по курсу 
+%<<Методы оптимальных решений>>}\author{\copyright Артамонов Н.В., кафедра ЭММАЭ}
+
+\begin{document}
+
+\maketitle
+
+%\markright{}
+\tableofcontents
+
+\section{Задачи оптимизации}
+
+\textbf{Внимание: Во всех расчетных задачах обязательно проверять достаточные условия экстремума!}
+
+\subsection{Безусловная оптимизация}
+
+\input{unconstrained-opt.tex}
+
+\subsection{Выпуклость}
+
+\input{convexity.tex}
+
+\subsection{Оптимизации с ограничениями  равенства}
+
+\input{constrained-opt.tex}
+
+\appendix
+
+\section{Приложение}
+
+\input{appendix.tex}
+
+
+\end{document}
