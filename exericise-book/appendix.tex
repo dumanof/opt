@@ -156,9 +156,10 @@ $\Hessian_f(\vectx)\leq0$ % (как симметричная матрица)
 Пусть в точке $\hat{\vectx}$  ранг матрицы $(\frac{\partial g_j}{\partial x_i})$ максимален и 
 эта точка удовлетворяет необходимым условия экстремума.\\
 Тогда достаточным условием локального минимума является выполнение неравенств
-\begin{equation}\label{EqualityConstraintMinSignSufficientCondition}
-	(-1)^k\Minor_1(\hat{\vectx}),\ldots,(-1)^k\Minor_{n-k}(\hat{\vectx})>0.
-\end{equation}
+\begin{align}\label{EqualityConstraintMinSignSufficientCondition}
+	(-1)^k\Minor_i(\hat{\vectx},\hat{\vectlambda})&>0 & 
+	i&=1,\ldots,n-k.
+\end{align}
 \end{teorema}
 \begin{remark}
 Условие \eqref{EqualityConstraintMinSignSufficientCondition} означает, что
@@ -168,13 +169,28 @@ $\Hessian_f(\vectx)\leq0$ % (как симметричная матрица)
 \begin{teorema}[Достаточные условия максимума]\label{EqualityConstraintMaxSufficientCondition}
 Пусть в точке $\hat{\vectx}$  ранг матрицы $(\frac{\partial g_j}{\partial x_i})$ максимален и 
 эта точка удовлетворяет необходимым условия экстремума.\\
-Тогда достаточным условием наличия максимума является выполнение неравенств
+Тогда достаточным условием наличия локального максимума является выполнение неравенств
 \begin{align}\label{EqualityConstraintMaxSignSufficientCondition}
-	(-1)^n(-1)^{i-1}\Minor_i(\hat{\vectx})&>0 & i&=1,\ldots,n-k.
+	(-1)^n(-1)^{i-1}\Minor_i(\hat{\vectx},\hat{\vectlambda})&>0 & 
+	i&=1,\ldots,n-k.
 \end{align}
 \end{teorema}
 \begin{remark}
 Условие \eqref{EqualityConstraintMaxSignSufficientCondition} означает чередование знаков
 в последовательности миноров $\Minor_1,\ldots,\Minor_{n-k}$, начиная со знака $(-1)^n$.
 \end{remark}
+Рассмотрим два частных случая:
+\begin{itemize}
+	\item \(n=2,k=1\) (две переменных при одном ограничении). Тогда 
+	\(n-k=1\) и 
+	\begin{align*}
+		(loc)\min:& \Minor_1<0 & (loc)\max:& \Minor_1>0
+	\end{align*}
+	\item \(n=3,k=1\) (три переменных при одном ограничении). Тогда 
+	\(n-k=2\) и 
+	\begin{align*}
+		(loc)\min:& \Minor_1,\Minor_2<0 & 
+		(loc)\max:& \Minor_1<0,\Minor_2>0
+	\end{align*}
+\end{itemize}
 	
