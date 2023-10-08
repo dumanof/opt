@@ -1,0 +1,140 @@
+% !TEX root = exercise-book-opt.tex
+
+\begin{exercise}
+Решите задачи оптимизации
+\begin{align*}
+	&\begin{gathered}
+		\min(2x^2+5y^2) \\  s.t\; x-y\geq 5
+	\end{gathered} &
+	&\begin{gathered}
+		\max (x+2y) \\ s.t.\; x^2+y^2\leq4
+	\end{gathered}
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Решите задачи оптимизации
+\begin{align*}
+	&\begin{gathered}
+		\max(2x+4y-5x^2-y^2-4xy)\\ s.t.\; 2x+3y\leq 40
+	\end{gathered} &
+	&\begin{gathered}
+		\max(4x+8y-6x^2-2y^2-8xy)\\ s.t.\; 2x+2y\leq 9
+	\end{gathered} \\
+	&\begin{gathered}
+		\max(4x+10y-2x^2-6y^2-6xy)\\ s.t.\; 3x+6y\leq 3
+	\end{gathered} &
+	&\begin{gathered}
+		\max(8x+8y-3x^2-3y^2-6xy)\\ s.t.\; 2x+4y\leq 13
+	\end{gathered}
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Решите задачи оптимизации
+\begin{align*}
+	&\begin{gathered}
+		\min(5x^2+y^2+4xy-2x-4y)\\ s.t.\; 2x+y\geq 40
+	\end{gathered} &
+	&\begin{gathered}
+		\min(5x^2+y^2-4xy-2x-y)\\ s.t.\; 2x+3y\geq 10
+	\end{gathered} \\
+	&\begin{gathered}
+		\min(5x^2+4y^2-8xy-3x-4y)\\ s.t.\; 2x+4y\geq 31
+	\end{gathered} &
+	&\begin{gathered}
+		\min(2x^2+6y^2-6xy-4x-43)\\ s.t.\; 3x+6y\geq 20
+	\end{gathered}
+\end{align*}
+\end{exercise}
+
+\begin{exercise}
+Решите задачи оптимизации
+\begin{align*}
+	& \begin{gathered}
+		\max (x-2y) \\ s.t.\; x^2+y^2\leq 4
+	\end{gathered} &
+	& \begin{gathered}
+		\max(1-(x+1)^2-(y-1)^2) \\ s.t.\; x+y\leq 10
+	\end{gathered} \\
+	& \begin{gathered}
+		\max (x-2y) \\ s.t.\left\{\begin{aligned}
+			 x^2+y^2&\leq 4 \\  x,y&\geq0
+		\end{aligned}\right.
+	\end{gathered} &
+	& \begin{gathered}
+		\max(1-(x+1)^2-(y-1)^2) \\ s.t.\left\{\begin{aligned}
+			x+y&\leq 10  \\  x,y&\geq0
+		\end{aligned}\right.
+	\end{gathered}
+\end{align*}
+\end{exercise}
+
+% \begin{exercise}
+% Завод производит два вида товаров, цена на которые равны 
+% $P_1=50$ и $P_2=40$. Функция издержек равна
+% \[
+% 	C(Q_1,Q_2)=2Q_1^2+Q_2^2
+% \]
+% ($Q_1, Q_2$ -- объемы производства товаров). Найдите оптимальные объемы производства,
+% максимизирующие выручку, если издержки не должны
+% превышать 20. 
+% \end{exercise}
+
+% \begin{exercise}%[\textbf{5 баллов} за каждый пункт]
+% Завод производит два вида товаров, (обратные) функции спроса на которые
+% имеют вид $P_1=50-2Q_1$ и $P_2=40-2Q_2$ (цены эндогенны). Функция
+% издержек равна $C(Q_1,Q_2)=Q_1+Q_2$
+% ($Q_1, Q_2$ -- объемы производства товаров).  Производитель определил,
+% что издержки не должны превышать 100. Найдите оптимальную производственную программу.
+% \end{exercise}
+
+% \begin{exercise}%[\textbf{5 баллов} за каждый пункт]
+% Завод производит два вида товаров, цена на которые
+% равны $P_1=2$ и $P_2=4$ (цены экзогенны). Функция
+% издержек равна $C(Q_1,Q_2)=Q_1^2+2Q_2^2$
+% ($Q_1, Q_2$ -- объемы производства товаров). Производитель определил, что
+% выручка не должна быть меньше 20.
+% Найдите оптимальную производственную программу.
+% \end{exercise}
+
+% \begin{exercise}
+% %\textcolor{red}{Сложная задача. }
+% Потребительская корзина состоит из двух товаров, её функция
+% полезности равна $U(x,y)=x+a\ln(y)$ (параметр $a>0$).
+% Потребитель решает оптимальную задачу
+% \begin{align*}
+% 	& \max\, U(x,y) \\ 
+% 	s.t.&\left\{\begin{aligned}
+% 		2x+y&\leq 10 \\ x,y&\geq0
+% 	\end{aligned}\right.
+% \end{align*}
+% При каких значениях параметрах $a$ 
+% \begin{enumerate}
+% 	\item потребительская корзина состоит только из 
+% 	второго товара
+% 	\item содержит оба товара
+% \end{enumerate}
+% \end{exercise}
+
+% \begin{exercise}[Consumption--Leisure choice]
+% Экономический агент имеет два <<товара>>: <<отдых>> $l$ (leisure, в часах) и потребление $x$.
+% Пусть $w$ -- почасовая оплата и $P$ -- цена потребления. Агент располагает общим временем $H$,
+% которое он может тратить на работу и на отдых, и также имеет фиксированный доход $M$
+% (non-labor income). Функция полезности экономического агента $U(x,l)x+c\ln l$ ($c>0$). 
+% Рассмотрим задачу оптимизации
+% \begin{gather*}
+% 	\max U(x,l) \\
+% 	s.t.\left\{\begin{gathered}
+% 		Px+wl\leq wH+M \\ 0\leq l\leq H \\ x\geq0
+% 	\end{gathered}
+% 	\right.
+% \end{gather*}
+% Найдите решение задачи оптимизации.
+% \end{exercise}
+
+% \begin{exercise}
+% Экономический агент потребляет два товара и его функция полезности равна
+% $U(x,y)=y+c\ln x$ ( $c>0$). Цены на товары равны $P_1$ и $P_2$, доход равен $I$.
+% Сформулируйте задачу об оптимальной потребительской корзине и найдите её решение.
+% \end{exercise}

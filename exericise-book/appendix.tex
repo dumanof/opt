@@ -184,13 +184,261 @@ $\Hessian_f(\vectx)\leq0$ % (как симметричная матрица)
 	\item \(n=2,k=1\) (две переменных при одном ограничении). Тогда 
 	\(n-k=1\) и 
 	\begin{align*}
-		(loc)\min:& \Minor_1<0 & (loc)\max:& \Minor_1>0
+		(loc)\min:&\; \Minor_1<0 & (loc)\max:&\; \Minor_1>0
 	\end{align*}
 	\item \(n=3,k=1\) (три переменных при одном ограничении). Тогда 
 	\(n-k=2\) и 
 	\begin{align*}
-		(loc)\min:& \Minor_1,\Minor_2<0 & 
-		(loc)\max:& \Minor_1<0,\Minor_2>0
+		(loc)\min:&\; \Minor_1,\Minor_2<0 & 
+		(loc)\max:&\; \Minor_1<0,\Minor_2>0
 	\end{align*}
 \end{itemize}
 	
+\subsection{Функция Лагранжа для ограничений неравенства}
+
+\paragraph{Задача 1}
+
+Будем рассматривать задачу максимизации в виде
+\begin{equation}\label{MaxInequalityConstraintOptmization}
+	\begin{aligned} & \textcolor{red}{\max}  f(\vectx) \\ 
+		s.t. & 
+		\left\{\begin{aligned} g_1(\vectx) & \textcolor{red}{\leq} C_1 \\ 
+		& \vdots \\ 
+		g_k(\vectx) & \textcolor{red}{\leq} C_k \end{aligned}\right.
+	\end{aligned} 
+\end{equation}
+и задачу минимизации в виде
+\begin{equation}\label{MinInequalityConstraintOptmization}
+	\begin{aligned} & \textcolor{red}{\min}  f(\vectx) \\ 
+		 s.t. & 
+		 \left\{\begin{aligned} g_1(\vectx) & \textcolor{red}{\geq} C_1 \\ 
+		 & \vdots \\ 
+		 g_k(\vectx) & \textcolor{red}{\geq} C_k \end{aligned}\right.
+	 \end{aligned} 
+\end{equation}
+
+\begin{importante}
+Согласованность знаков неравенства в ограничениях с максимизацией/минимизацией
+целевой функции.
+\end{importante}
+
+\begin{definicion}
+Задача оптимизации \eqref{MaxInequalityConstraintOptmization} называется 
+\textbf{задачей выпуклого программирования} или \textbf{выпуклой оптимизации}, если
+\begin{itemize}
+	\item $f$ вогнута
+	\item $g_1,\ldots,g_k$ выпуклы
+\end{itemize}
+\end{definicion}
+\begin{definicion}
+Задача оптимизации \eqref{MinInequalityConstraintOptmization} называется 
+\textbf{задачей выпуклого программирования} или \textbf{выпуклой оптимизации}, если
+\begin{itemize}
+	\item $f$ выпукла
+	\item $g_1,\ldots,g_k$ вогнуты
+\end{itemize}
+\end{definicion}
+Обозначим
+\begin{align*}
+	\vectg(\vectx)&=\begin{pmatrix}
+		g_1(\vectx) \\ \vdots \\ g_k(\vectx)
+	\end{pmatrix} & \vectc&=\begin{pmatrix}
+		C_1 \\ \vdots \\ C_k
+	\end{pmatrix}
+\end{align*}
+Перепишем задачи \eqref{MaxInequalityConstraintOptmization},
+\eqref{MinInequalityConstraintOptmization} в виде
+\begin{align*}
+	&\max f(\vectx) & &\min f(\vectx) \\
+	s.t.\;&\vectg(\vectx)\leq \vectc  &
+	s.t.\;&\vectg(\vectx)\geq \vectc 
+\end{align*}
+Функцией Лагранжа для задачи \eqref{MaxInequalityConstraintOptmization} и задачи
+\eqref{MinInequalityConstraintOptmization} имеет вид
+\[
+	\Lagrange(\vectx,\vectlambda)=f(\vectx)-\sum_{j=1}^k\lambda_j(g_j(\vectx)-C_j)=
+	f(\vectx)-\vectlambda^\top(\vectg(\vectx)-\vectc)
+\]
+Дополнительные переменные $\vectlambda=(\lambda_1,\ldots,\lambda_k)^\top$ называются
+\textbf{множителями Лагранжа} (Lagrange multipliers). 
+\begin{definicion}
+Будем говорить, что для ограничений задачи \eqref{MaxInequalityConstraintOptmization} выполнено
+\textbf{условие Слейтера}, если существует $\vectx_0\in\R^n$ такой, что
+\[
+	\vectg(\vectx_0)<\vectc
+\]
+Будем говорить, что для ограничений задачи \eqref{MinInequalityConstraintOptmization} выполнено
+\textbf{условие Слейтера}, если существует $\vectx_0\in\R^n$ такой, что 
+\[
+	\vectg(\vectx_0)>\vectc
+\]
+\end{definicion}
+\begin{teorema}
+Пусть задача \eqref{MaxInequalityConstraintOptmization} 
+является задачей выпуклого программирования и для ограничений выполнено условие Слейтера.
+
+Тогда $\hat{\vectx}$ является решением экстремальной 
+задачи тогда и только тогда, когда он удовлетворяет системе 
+\begin{equation}\label{MaxInequalityConstraitNecessarySystem}
+	\left\{\begin{aligned}
+		\Lagrange'_{x_i}&=0 & i&=1,\ldots,n \\
+		\lambda_j\Lagrange'_{\lambda_j} &=0 & j&=1,\ldots,k \\
+		\textcolor{red}{\lambda_j\geq 0},\Lagrange'_{\lambda_j}&\geq0 & j&=1,\ldots,k 
+	\end{aligned}\right.
+\end{equation}
+Кроме того, $\hat{\vectx}$ -- глобальный максимум в задаче  \eqref{MaxInequalityConstraintOptmization}.
+\end{teorema}
+\begin{col}%[Необходимые условия минимума]\label{MinInequalityConstraintNecessaryCondition} 
+Чтобы точка $\vectx$ была локальным минимумом в задаче \eqref{MinInequalityConstraintOptmization}
+необходимо, чтобы для некоторых чисел $\hat{\lambda}_1,...,\hat{\lambda}_k$ выполнялась  
+система
+\begin{equation}\label{MinInequalityConstraitNecessarySystem}
+	\left\{\begin{aligned}
+		\Lagrange'_{x_i}&=0 & i&=1,\ldots,n \\
+		\lambda_j\Lagrange'_{\lambda_j} &=0 & j&=1,\ldots,k \\
+		\textcolor{red}{\lambda_j\geq 0},\Lagrange'_{\lambda_j}&\leq0 & j&=1,\ldots,k
+	\end{aligned}\right.
+\end{equation}
+Кроме того, $\hat{\vectx}$ -- глобальный минимум в задаче  \eqref{MinInequalityConstraintOptmization}.
+\end{col}
+Пусть $\hat{\vectx}$ -- решение
+задачи \eqref{MaxInequalityConstraintOptmization} или задачи 
+\eqref{MinInequalityConstraintOptmization}.
+Рассмотрим это решение как функцию от $C_1,\ldots,C_k$:
+\begin{align*}
+	\hat{\vectx}&=\hat{\vectx}(C_1,\ldots,C_k) &
+	\hat{f}&=f(\hat{\vectx})=\hat{f}(C_1,\ldots,C_k)
+\end{align*}
+\begin{teorema}
+Оптимальное решение есть гладкая функция от $C_1,\ldots,C_k$ и выполнены равенства
+\begin{align*}
+	\frac{\partial \hat{f}}{\partial C_j}&=\hat{\lambda}_j & j&=1,\ldots,k
+\end{align*}
+\end{teorema}
+
+\paragraph{Задача 2}
+
+Рассмотрим теперь задачу максимизации в следующей форме
+\begin{equation}\label{MaxKuhnTuckerInequalityConstraintOptmization}%\tag{max}
+	\begin{aligned}
+	&\textcolor{red}{\max}\, f(\vectx)  \\
+	s.t. & \left\{ 
+	\begin{aligned} 
+	& g_j(\vectx)\textcolor{red}{\leq} C_j & j&=1,\ldots,k\\
+	& \textcolor{red}{x_i\geq 0} &  i&=1,\ldots,n
+	\end{aligned}\right.
+	\end{aligned} 
+\end{equation}
+и задачу минимизации в форме
+\begin{equation}\label{MinKuhnTuckerInequalityConstraintOptmization}%\tag{min}
+	\begin{aligned}
+		&\textcolor{red}{\min}\, f(\vectx)  \\
+		s.t. & \left\{ 
+		\begin{aligned} 
+		& g_j(\vectx)\textcolor{red}{\geq} C_j & j&=1,\ldots,k\\
+		& \textcolor{red}{x_i\geq 0} &  i&=1,\ldots,n
+	\end{aligned}\right.
+	\end{aligned} 
+\end{equation}
+(отдельно выделяем ограничения неотрицательности переменных)
+\begin{definicion}
+Задача оптимизации \eqref{MaxKuhnTuckerInequalityConstraintOptmization} называется 
+\textbf{задачей выпуклого программирования} или \textbf{выпуклой оптимизации}, если
+\begin{itemize}
+	\item $f$ вогнута
+	\item $g_1,\ldots,g_k$ выпуклы
+\end{itemize}
+Задача оптимизации \eqref{MinKuhnTuckerInequalityConstraintOptmization} называется 
+\textbf{задачей выпуклого программирования} или \textbf{выпуклой оптимизации}, если
+\begin{itemize}
+	\item $f$ выпукла
+	\item $g_1,\ldots,g_k$ вогнуты
+\end{itemize}
+\end{definicion}
+Обозначим
+\begin{align*}
+	\vectg(\vectx)&=\begin{pmatrix}
+		g_1(\vectx) \\ \vdots \\ g_k(\vectx)
+	\end{pmatrix} & \vectc&=\begin{pmatrix}
+		C_1 \\ \vdots \\ C_k
+	\end{pmatrix}
+\end{align*}
+Перепишем задачи \eqref{MaxKuhnTuckerInequalityConstraintOptmization},
+\eqref{MinKuhnTuckerInequalityConstraintOptmization} в виде
+\begin{align*}
+	&\max f(\vectx) & &\min f(\vectx) \\
+	s.t.&\left\{\begin{aligned} \vectg(\vectx)&\leq \vectc \\ \vectx &\geq 0\end{aligned}\right. &
+	s.t.&\left\{\begin{aligned} \vectg(\vectx)&\geq \vectc \\ \vectx &\geq 0\end{aligned}\right.
+\end{align*}
+Определим для задач \eqref{MaxKuhnTuckerInequalityConstraintOptmization},
+\eqref{MinKuhnTuckerInequalityConstraintOptmization}
+\textbf{функцию Лагранжа в форме Куна -- Таккера}, включив в неё только
+нетривиальные ограничения
+\[
+	\LagrangeZ(\vectx,\vectmu)=f(\vectx)-\sum_{j=1}^k\mu_j(g_j(\vectx)-C_j)=
+	f(\vectx)-\vectmu^\top (\vectg(\vectx)-\vectc)
+\]
+с множителями Лагранжа 
+\(\vectmu=\begin{pmatrix} \mu_1 & \cdots & \mu_k \end{pmatrix}^\top \)
+\begin{definicion}
+Будем говорить, что для ограничений задачи \eqref{MaxKuhnTuckerInequalityConstraintOptmization} выполнено
+\textbf{условие Слейтера}, если существует $\vectx_0\in\R^n$ такой, что
+\begin{align*}
+	\vectg(\vectx_0)&<\vectc & \vectx_0&>0
+\end{align*}
+Будем говорить, что для ограничений задачи \eqref{MinKuhnTuckerInequalityConstraintOptmization} выполнено
+\textbf{условие Слейтера}, если существует $\vectx_0\in\R^n$ такой, что 
+\begin{align*}
+	\vectg(\vectx_0)&>\vectc & \vectx_0&>0
+\end{align*}
+\end{definicion}
+\begin{remark}
+Условие Слейтера относится только к системе ограничений и не касается целевой функции
+\end{remark}
+	
+\begin{teorema}%[Kuhn -- Tucker, 1951]
+Пусть задача \eqref{MaxKuhnTuckerInequalityConstraintOptmization} 
+является задачей выпуклого программирования и для ограничений выполнено условие Слейтера.
+
+Тогда $\hat{\vectx}$ является решением экстремальной 
+задачи тогда и только тогда, когда он удовлетворяет системе 
+\begin{equation}\label{MaxKuhnTuckerSystem}
+	\left\{\begin{aligned}
+	x_i \LagrangeZ'_{x_i}&=0 &  i&=1,\ldots,n \\
+	\mu_j\LagrangeZ'_{\mu_j}&=0 &  j&=1,\ldots,k\\
+	x_i\geq0,\; \LagrangeZ'_{x_i}&\leq0 &  i&=1,\ldots,n \\
+	\mu_j\geq0,\; \LagrangeZ'_{\mu_j}&\geq 0 &  j&=1,\ldots,k
+	\end{aligned}\right.
+\end{equation}
+Кроме того, $\hat{\vectx}$ -- глобальный максимум в задаче  \eqref{MaxKuhnTuckerInequalityConstraintOptmization}.
+\end{teorema}
+
+\begin{teorema}%[Kuhn -- Tucker, 1951]
+Пусть задача \eqref{MinKuhnTuckerInequalityConstraintOptmization} 
+является задачей выпуклого программирования и для ограничений выполнено условие Слейтера.
+
+Тогда $\hat{\vectx}$ является решением экстремальной 
+задачи тогда и только тогда, когда он удовлетворяет системе 
+\begin{equation}\label{MinKuhnTuckerSystem}
+	\left\{\begin{aligned}
+	x_i\LagrangeZ'_{x_i}&=0 & i&=1,\ldots,n \\
+	\mu_j\LagrangeZ'_{\mu_j}&=0 & j&=1,\ldots,k \\
+	x_i\geq0,\; \LagrangeZ'_{x_i}&\geq0 & i&=1,\ldots,n \\
+	\mu_j\geq0,\; \LagrangeZ'_{\mu_j}& \leq0 & j&=1,\ldots,k 
+	\end{aligned}\right.
+\end{equation}
+Кроме того, $\hat{\vectx}$ -- глобальный минимум в задаче  \eqref{MinKuhnTuckerInequalityConstraintOptmization}.
+\end{teorema}
+Рассмотрим оптимальное решение задачи \eqref{MaxKuhnTuckerInequalityConstraintOptmization} и задачи 
+\eqref{MinKuhnTuckerInequalityConstraintOptmization} и оптимальное значение целевой функции
+как функцию от  $C_1,\ldots,C_k$: 
+\begin{align*}
+	\hat{\vectx}&=\hat{\vectx}(C_1,\ldots,C_k) & 
+	\hat{f}&=f(\hat{\vectx})=\hat{f}(C_1,\ldots,C_k).
+\end{align*}
+\begin{teorema}
+$\hat{\vectx}=\hat{\vectx}(C_1,\ldots,C_k)$ есть гладкая функция и выполнены равенства
+\begin{align*}
+	\mu_j&=\frac{\partial \hat{f}}{\partial C_j} & j&=1,\ldots,k
+\end{align*}
+\end{teorema}
