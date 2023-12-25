@@ -6,3 +6,5 @@
 |------------------|------------------|
 |`exercise-book`   | Задачи по курсу  |
 |`jupyter-notebook`| Примеры на Python|
+
+Копия репозитория расположена на [DigitLab](http://digitlab.mgimo.ru/artamonov/optimization)
